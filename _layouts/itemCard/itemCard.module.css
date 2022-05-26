@@ -1,0 +1,50 @@
+.itemCard {
+    max-width: 250px;
+    position: relative;
+    margin: 30px 20px 20px 20px;
+    height: 400px;
+    overflow: hidden;
+}
+
+.title {
+    cursor: pointer;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.title:hover {
+    text-decoration: underline;
+}
+
+.itemCard p {
+    font-family: 'Libre Bodoni', serif;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.itemCard img {
+    width: 250px;
+    height: 70%;
+    border-radius: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.price {
+    display: flex;
+    justify-content: space-between;
+}
+
+.shopCart {
+    text-align: center;
+    padding: 5px 15px;
+    font-size: 24px;
+    background-color: coral;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+

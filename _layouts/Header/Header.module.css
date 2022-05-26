@@ -1,0 +1,17 @@
+.header {
+    background-color: coral;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.nav{
+    width: 1280px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav h1 {
+    cursor: pointer;
+    color: white;
+}
