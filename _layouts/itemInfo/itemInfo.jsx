@@ -1,18 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './itemPage.module.css'
-import { StarFilled } from "@ant-design/icons"
+import { Rate } from 'antd'
+import 'antd/lib/rate/style/index.css'
 
 function ItemInfo({itemData}) {
     const cartItems = useSelector(state => state)
     const dispatch = useDispatch()
-
-    let arr = []
-    for (let i=0; i<5; i++) {
-        let checked;
-        i<Math.floor(itemData[0].rating.rate) ? checked = true : checked = false;
-        let obj = {i, checked}
-        arr.push(obj)
-    }
 
     function addToCart() {
         dispatch({type:"ADD_ITEM", data: itemData[0]})
@@ -30,10 +23,18 @@ function ItemInfo({itemData}) {
                 <p className={styles.price}>{itemData[0].price}$</p>
                 <p className={styles.description}>{itemData[0].description}</p>
                 <p className={styles.category}>{itemData[0].category}</p>
-                <p>{arr.map(el => el.checked ? <StarFilled key={Math.floor(Math.random() * 1000)} style={{color: "#fcba03"}} /> : <StarFilled key={Math.floor(Math.random() * 1000)} style={{color: 'gray'}}/>)}  ({itemData[0].rating.count})</p>
-                {cartItems.some(el => el.id === itemData[0].id) ? 
-                  <button className={styles.addToCart} onClick={removeFromCart}>Remove from cart</button>
-                : <button className={styles.addToCart} onClick={addToCart}>Add to Cart</button>}
+                <div>
+                    <Rate style={{fontSize: '16px'}} allowHalf disabled defaultValue={itemData[0].rating.rate}/> <span> ({itemData[0].rating.count})</span>
+                </div>
+                <div className={styles.centerButton}>
+                    {cartItems.some(el => el.id === itemData[0].id)
+                    ? 
+                        <button className={styles.addToCart} onClick={removeFromCart}>Remove from cart</button>
+                    : 
+                        <button className={styles.addToCart} onClick={addToCart}>Add to Cart</button>
+                    }
+                </div>
+
             </div>
         </div>
      );

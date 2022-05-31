@@ -7,7 +7,11 @@
 }
 
 .itemDescription {
+    align-self: center;
     margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
 }
 
 .price {
@@ -32,7 +36,14 @@
     text-transform: uppercase;
 }
 
+.centerButton {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .addToCart {
+    margin-top: 10px;
     width: 50%;
     height: 35px;
     background-color: coral;
