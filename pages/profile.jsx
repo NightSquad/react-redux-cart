@@ -26,6 +26,21 @@ function userPage({userData}) {
                     <p>Телефон: {userData.phone}</p>
                     <p>e-mail: {userData.email}</p>                    
                 </div>
+                <div className={styles.orders}>
+                    <p>Заказы:</p>
+                    <div className={styles.orderItems}>
+                        <div className={styles.orderItem}>
+                            <img className={styles.itemImg} src="https://photo_cache.hb.bizmrg.com/Render/rnd000000317/341c8529-cfa3-4a99-9698-314da4333706.png"></img>
+                            <div className={styles.itemList}>
+                                <h3>Haval Jolion</h3>
+                                <p>Номер заказа: 57712391901</p>
+                                <p>Дата заказа: 24.01.2022</p>
+                                <p>Количество: 1 шт.</p>
+                                <p>Стоимость: <u><b>3.123.555</b></u> р</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div> 
     );
