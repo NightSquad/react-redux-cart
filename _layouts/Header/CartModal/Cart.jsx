@@ -24,8 +24,8 @@ function Cart() {
             ? 
             <div className={styles.cartItems}>
                 {cartItems.map(item => <CartItem key={item.id + Math.floor(Math.random() * 1000)} data={item}/>)}
-                <span>{`Cумма: ${TotalPrice.toFixed(2)}$`}</span>
-                <button className={styles.paymentButton}>Оплатить</button>
+                <span>{`Cумма: ${TotalPrice}$`}</span>
+                {/* <button className={styles.paymentButton}>Оплатить</button> */}
             </div>
             : <p className={styles.empty}>Корзина пуста</p>}
             </div> : <></>}

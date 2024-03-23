@@ -17,10 +17,10 @@ function ItemInfo({itemData}) {
 
     return ( 
         <div className={styles.itemContent}>
-            <img src={itemData[0].image} alt="" width={500} height={700}/>
+            <img className={styles.itemImage} src={itemData[0].image} alt=""/>
             <div className={styles.itemDescription}>
                 <p className={styles.title}>{itemData[0].title}</p>
-                <p className={styles.price}>{itemData[0].price}$</p>
+                <p className={styles.price}>{(itemData[0].price).toString().split('').reverse().map((el, index) => index % 3 !== 2 ? el : `.${el}`).reverse().join('')} ₽</p>
                 <p className={styles.description}>{itemData[0].description}</p>
                 <p className={styles.category}>{itemData[0].category}</p>
                 <div>
@@ -31,7 +31,7 @@ function ItemInfo({itemData}) {
                     ? 
                         <button className={styles.addToCart} onClick={removeFromCart}>Remove from cart</button>
                     : 
-                        <button className={styles.addToCart} onClick={addToCart}>Add to Cart</button>
+                        <button className={styles.addToCart} onClick={addToCart}>Оставить заявку</button>
                     }
                 </div>
 
