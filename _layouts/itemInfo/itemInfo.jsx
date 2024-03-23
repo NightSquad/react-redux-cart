@@ -31,7 +31,7 @@ function ItemInfo({itemData}) {
                     ? 
                         <button className={styles.addToCart} onClick={removeFromCart}>Remove from cart</button>
                     : 
-                        <button className={styles.addToCart} onClick={addToCart}>Оставить заявку</button>
+                        <button className={styles.addToCart} onClick={addToCart}>Оставить заявку.</button>
                     }
                 </div>
 
