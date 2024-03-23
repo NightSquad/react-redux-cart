@@ -1,0 +1,61 @@
+.Cart {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.cartButton {
+    color: white;
+    border: none;
+    height: 100%;
+    width: 50px;
+    font-size: 50px;
+    background-color: transparent;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.Modal {
+    position: absolute;
+    display: flex;
+    padding: 5px;
+    min-height: 100px;
+    top: 100%;
+    left: -100%;
+    width: 230px;
+    background-color: white;
+    box-shadow: 0px 1px 3px black;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.Modal p {
+    margin-top: 0;
+}
+
+.empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.count {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: white;
+    font-weight: bold;
+}
+
+.paymentButton {
+    background-color: coral;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    box-shadow: 1px 1px 3px black;
+    margin-left: 5px;
+}

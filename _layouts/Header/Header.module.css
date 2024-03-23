@@ -1,0 +1,37 @@
+.header {
+    background-color: rgb(80, 191, 255);
+    align-items: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.nav{
+    width: 1280px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav h1 {
+    cursor: pointer;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profileButton {
+    margin-left: 30px;
+    color: white;
+    border: none;
+    background-color: transparent;
+    width: 50px;
+    font-size: 45px;
+    box-sizing: border-box;
+    overflow: hidden;
+    cursor: pointer;
+}

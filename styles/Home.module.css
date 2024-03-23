@@ -1,0 +1,92 @@
+.main, .info {
+  width: 1280px;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+.viewType {
+  margin-top: 30px;
+  display: flex;
+  column-gap: 5px;
+}
+
+.viewType input{
+  display: none;
+}
+
+.viewType label {
+  position: relative;
+  display: block;
+  width: 16px;
+  height: 16px;
+  opacity: .5;
+  cursor: pointer;
+}
+
+.containerButton {
+  background: url(../assets/group.svg);
+}
+
+.viewType input:checked + label {
+  opacity: 1;
+}
+
+.listButton {
+  background: url(../assets/list.svg);
+}
+
+.itemsContainer {
+  margin-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 80px;
+  row-gap: 50px;
+}
+
+.itemsList {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.avatar {
+  width: 250px;
+  height: 250px;
+  border: 2px solid rgb(184, 184, 184);
+  font-size: 250px;
+  background-color: rgb(197, 197, 197);
+  border-radius: 50%;
+  overflow: hidden;
+  color: white;
+}
+
+.name {
+  font-weight: 700;
+  margin-top: 10px;
+  font-size: 50px;
+}
+
+.otherInfo {
+  margin-top: 10px;
+  width: 550px;
+  display: flex;
+  justify-content: space-between;
+  color: gray;
+}
