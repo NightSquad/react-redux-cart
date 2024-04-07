@@ -8,15 +8,17 @@ import { UserOutlined } from "@ant-design/icons";
 import { useEffect } from "react";
 import AuthService from "../services/auth.service";
 import { Spin } from "antd";
+import { useRouter } from "next/router";
 
 function userPage({userData}) {
     const [user, setUser] = useState(null)
+    const router = useRouter();
 
     useEffect(() => {
-        setUser(AuthService.getCurrentUser())
-      }, []);
-
-      console.log(user)
+        let user = AuthService.getCurrentUser()
+        if (!user) router.push("/login")
+        setUser(user)
+    }, []);
 
     userData = userData[0]
     return ( 
