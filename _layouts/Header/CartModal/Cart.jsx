@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 
 function Cart() {
     let cartItems = useSelector(state => state)
+    console.log(cartItems)
     const [modalVisible, setModalVisible] = useState(false)
     let TotalPrice = 0;
     cartItems.length > 0 ? cartItems.forEach(el => TotalPrice += el.price) : <></>

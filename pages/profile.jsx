@@ -3,10 +3,21 @@ import Head from "next/head";
 import Header from "../_layouts/Header/Header";
 import cartReducer from "../Reducers/cartReducer";
 import styles from '../styles/Home.module.css'
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import { UserOutlined } from "@ant-design/icons";
+import { useEffect } from "react";
+import AuthService from "../services/auth.service";
+import { Spin } from "antd";
 
 function userPage({userData}) {
+    const [user, setUser] = useState(null)
+
+    useEffect(() => {
+        setUser(AuthService.getCurrentUser())
+      }, []);
+
+      console.log(user)
+
     userData = userData[0]
     return ( 
         <div>
@@ -18,13 +29,13 @@ function userPage({userData}) {
 
             <Provider store={cartReducer}>
             <Header/>
-            </Provider>
+            { user ? 
             <div className={styles.info}>
                 <div className={styles.avatar}><UserOutlined/></div>
-                <p className={styles.name}>{userData.name} {userData.secondName} {userData.surname}</p>
+                <p className={styles.name}>{user.name} {userData.secondName} {user.surname}</p>
                 <div className={styles.otherInfo}>
                     <p>Телефон: {userData.phone}</p>
-                    <p>e-mail: {userData.email}</p>                    
+                    <p>e-mail: {user.email}</p>                    
                 </div>
                 <div className={styles.orders}>
                     <p>Заказы:</p>
@@ -42,6 +53,9 @@ function userPage({userData}) {
                     </div>
                 </div>
             </div>
+            :
+            <Spin size="large"/>}
+            </Provider>
         </div> 
     );
 }
@@ -49,6 +63,7 @@ function userPage({userData}) {
 export default userPage;
 
 export async function getServerSideProps() {
+
     let response = await fetch(`http://localhost:3000/api/profile`)
     let userData = await response.json()
     return {

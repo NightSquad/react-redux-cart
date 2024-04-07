@@ -1,4 +1,4 @@
-.main, .info {
+.main, .info, .authPage {
   width: 1280px;
   margin: 0 auto;
   flex-direction: column;
@@ -125,4 +125,73 @@
   width: 250px;
   height: 250px;
   object-fit: contain;
+}
+
+.authPage {
+  margin-top: 50px;
+  display: flex;
+  width: 500px;
+  height: 300px;
+  border: 2px solid rgb(218, 218, 218);
+  border-radius: 5px;
+}
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Form h1 {
+  margin-top: 10px;
+  align-self: center;
+}
+
+.formInput label {
+  display: inline-block;
+  width: 70px;
+  text-align: right;
+}
+
+.formInput input {
+  margin-left: 5px;
+  margin-top: 20px;
+  transition: .2s ease-in;
+  height: 30px;
+  width: 200px;
+  border: 1px solid rgb(190, 190, 190);
+  border-radius: 3px;
+  padding-left: 5px;
+}
+
+.formInput input:focus {
+  transition: none;
+  outline: none;
+  box-shadow: 0px 0px 3px 1px rgb(80, 191, 255);
+}
+
+.formInput input:hover {
+  border: 1px solid rgb(80, 191, 255)
+}
+
+.submitButton {
+  width: 70px;
+  height: 30px;
+  background-color: rgb(29, 172, 255);
+  border: none;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.submitButton:hover {
+  background-color: rgb(80, 191, 255);
+}
+
+.registerButton {
+  margin-top: 15px;
+  border: none;
+  background: none;
+  text-decoration: underline;
 }
