@@ -11,7 +11,7 @@ import { Spin } from "antd";
 import { useRouter } from "next/router";
 import OrderItem from "../_layouts/UI/order";
 
-function userPage({itemData}) {
+function adminPage({itemData}) {
     const [user, setUser] = useState(null)
     const [orders, setOrders] = useState(null)
     const router = useRouter();
@@ -19,10 +19,10 @@ function userPage({itemData}) {
 
     useEffect(() => {
         let user = AuthService.getCurrentUser()
-        console.log(user)
         if (!user) router.push("/login")
+        if (!user.roles.includes("ROLE_MANAGER")) router.push("/profile")
 
-        AuthService.getOrders().then((order) => setOrders(order))
+        AuthService.getAllOrders().then((order) => setOrders(order))
         setUser(user)
     }, []);
 
@@ -31,8 +31,11 @@ function userPage({itemData}) {
     if (orders) {
             cars = orders.map((order) => order.vehicle = itemData[order.vehicle_id - 1])
     }
-    let type = "user"
+
+    console.log(orders)
+
     console.log(cars)
+    let type = "admin"
     return ( 
         <div>
         <Head>
@@ -45,15 +48,9 @@ function userPage({itemData}) {
             <Header/>
             { user ? 
             <div className={styles.info}>
-                <div className={styles.avatar}><UserOutlined/></div>
-                <p className={styles.name}>{user.name} {user.surname}</p>
-                <div className={styles.otherInfo}>
-                    {/* <p>Телефон: {userData.phone}</p> */}
-                    <p>e-mail: {user.email}</p>                    
-                </div>
                 <div className={styles.orders}>
                     <p>Заказы:</p>
-                    <div className={styles.orderItems}>
+                    <div className={styles.ManageOrders}>
                         {orders ? orders.map(order => <OrderItem key={order.id} data={{order, type}}></OrderItem>) : <Spin size="large"/>}
                     </div>
                 </div>
@@ -65,7 +62,7 @@ function userPage({itemData}) {
     );
 }
 
-export default userPage;
+export default adminPage;
 
 export async function getServerSideProps() {
     let response = await fetch('http://localhost:3000/api/items')
