@@ -2,13 +2,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './itemPage.module.css'
 import { Rate } from 'antd'
 import 'antd/lib/rate/style/index.css'
+import AuthService from '../../services/auth.service';
 
 function ItemInfo({itemData}) {
     const cartItems = useSelector(state => state)
     const dispatch = useDispatch()
+    console.log(itemData)
 
-    function addToCart() {
-        dispatch({type:"ADD_ITEM", data: itemData[0]})
+    const addToCart = () => {
+        AuthService.createOrder(itemData[0].id)
     }
 
     const removeFromCart = () => {

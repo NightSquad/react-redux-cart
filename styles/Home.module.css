@@ -195,3 +195,10 @@
   background: none;
   text-decoration: underline;
 }
+
+.ManageOrders {
+  display: flex;
+  width: 1280px;
+  column-gap: 50px;
+  flex-wrap: wrap;
+}
