@@ -20,7 +20,10 @@ function userPage({itemData}) {
     useEffect(() => {
         let user = AuthService.getCurrentUser()
         console.log(user)
-        if (!user) router.push("/login")
+        if (!user) {
+            router.push("/login")
+            return
+        }
 
         AuthService.getOrders().then((order) => setOrders(order))
         setUser(user)
@@ -48,9 +51,13 @@ function userPage({itemData}) {
                 <div className={styles.avatar}><UserOutlined/></div>
                 <p className={styles.name}>{user.name} {user.surname}</p>
                 <div className={styles.otherInfo}>
-                    {/* <p>Телефон: {userData.phone}</p> */}
+                    <p>Телефон: {user.phone}</p>
                     <p>e-mail: {user.email}</p>                    
                 </div>
+                { user.roles.includes("ROLE_MANAGER") ? 
+                    <button className={styles.adminButton} onClick={(e) => router.push("/admin")}>Админ-панель</button>
+                    : ""
+                }
                 <div className={styles.orders}>
                     <p>Заказы:</p>
                     <div className={styles.orderItems}>
