@@ -202,3 +202,11 @@
   column-gap: 50px;
   flex-wrap: wrap;
 }
+
+.adminButton {
+  background: none;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}

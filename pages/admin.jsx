@@ -46,7 +46,7 @@ function adminPage({itemData}) {
 
             <Provider store={cartReducer}>
             <Header/>
-            { user ? 
+            { user && user.roles.includes("ROLE_MANAGER") ? 
             <div className={styles.info}>
                 <div className={styles.orders}>
                     <p>Заказы:</p>
