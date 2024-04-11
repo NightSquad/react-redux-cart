@@ -119,6 +119,11 @@
   flex-direction: column;
   justify-content: space-around;
   font-size: 15px;
+  row-gap: 10px;
+}
+
+.itemList:nth-child(2){
+  padding: 10px 0;
 }
 
 .itemImg {
