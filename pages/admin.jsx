@@ -13,8 +13,10 @@ import OrderItem from "../_layouts/UI/order";
 
 function adminPage({itemData}) {
     const [user, setUser] = useState(null)
+    const [ids, setIds] = useState()
     const [orders, setOrders] = useState(null)
     const router = useRouter();
+
     
 
     useEffect(() => {
@@ -22,17 +24,25 @@ function adminPage({itemData}) {
         if (!user) router.push("/login")
         if (!user.roles.includes("ROLE_MANAGER")) router.push("/profile")
 
-        AuthService.getAllOrders().then((order) => setOrders(order))
+        AuthService.getAllOrders().then((order) => {
+            let users = order.map(order => order.client_id)
+            AuthService.getUsers(users).then((userArr) => {
+                console.log( userArr)
+                setIds(userArr)
+            })
+            setOrders(order)
+        })
         setUser(user)
     }, []);
 
-    // console.log(orders)
     let cars
     if (orders) {
             cars = orders.map((order) => order.vehicle = itemData[order.vehicle_id - 1])
     }
 
-    console.log(orders)
+    if (orders) {
+        console.log(ids)
+    }
 
     console.log(cars)
     let type = "admin"
@@ -51,7 +61,7 @@ function adminPage({itemData}) {
                 <div className={styles.orders}>
                     <p>Заказы:</p>
                     <div className={styles.ManageOrders}>
-                        {orders ? orders.map(order => <OrderItem key={order.id} data={{order, type}}></OrderItem>) : <Spin size="large"/>}
+                        {orders ? orders.map(order => <OrderItem key={order.id} data={{order, type, ids}}></OrderItem>) : <Spin size="large"/>}
                     </div>
                 </div>
             </div>

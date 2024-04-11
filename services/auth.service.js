@@ -69,6 +69,16 @@ const updateOrder = (id, status) => {
     })
 }
 
+const getUsers = (users) => {
+  return axios
+    .post(API_URL + "getUsers", {
+      users
+    }).then((response) => {
+      console.log(response.data)
+      return response.data
+    })
+}
+
 const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem("user"));
 };
@@ -81,7 +91,8 @@ const AuthService = {
   getOrders,
   createOrder,
   getAllOrders,
-  updateOrder
+  updateOrder,
+  getUsers
 };
 
 export default AuthService;
